@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://3fi6kk1epxbr"]
+
+[ext_resource type="Texture2D" uid="uid://bg6bcgnh6aa4t" path="res://Assets/Spritesheet/spaceShooter2_spritesheet.png" id="1_f6fm3"]
+[ext_resource type="Script" uid="uid://b1igjghhb8rkq" path="res://Scripts/asteroid_1.gd" id="1_tqh6u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vivr"]
+atlas = ExtResource("1_f6fm3")
+region = Rect2(2, 400, 216, 220)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1vivr"]
+radius = 108.0
+
+[node name="Asteroid_1" type="RigidBody2D" unique_id=454118164 groups=["Asteroid"]]
+collision_layer = 2
+collision_mask = 3
+mass = 10.0
+gravity_scale = 0.0
+script = ExtResource("1_tqh6u")
+speed = 100.0
+direction = Vector2(-1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=944336638]
+texture = SubResource("AtlasTexture_1vivr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=717555784]
+shape = SubResource("CircleShape2D_1vivr")
+
+[node name="Timer" type="Timer" parent="." unique_id=1853456646]
+wait_time = 40.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

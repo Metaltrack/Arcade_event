@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b14mvt3uf7wkt"]
+
+[ext_resource type="Script" uid="uid://wj1hw7wujxyq" path="res://Scripts/bullet.gd" id="1_oduel"]
+[ext_resource type="Texture2D" uid="uid://bg6bcgnh6aa4t" path="res://Assets/Spritesheet/spaceShooter2_spritesheet.png" id="1_xjght"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vivr"]
+atlas = ExtResource("1_xjght")
+region = Rect2(549, 462, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjght"]
+atlas = ExtResource("1_xjght")
+region = Rect2(548, 353, 15, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(9, 8)
+
+[node name="bullet" type="Area2D" unique_id=1184313410]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_oduel")
+
+[node name="bullet_sprite" type="Sprite2D" parent="." unique_id=1847112871]
+texture_filter = 1
+rotation = 1.5707964
+scale = Vector2(0.6, 0.6)
+texture = SubResource("AtlasTexture_1vivr")
+
+[node name="bullet_trail" type="Sprite2D" parent="bullet_sprite" unique_id=197429858]
+texture_filter = 1
+position = Vector2(7.2852316e-07, 16.666666)
+texture = SubResource("AtlasTexture_xjght")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=748377500]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_8vrlf")
+
+[node name="Timer" type="Timer" parent="." unique_id=1600302730]
+wait_time = 5.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

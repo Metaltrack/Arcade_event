@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bhgrixcpx0q75"]
+
+[ext_resource type="Script" uid="uid://dca3p8aaakypv" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://bg6bcgnh6aa4t" path="res://Assets/Spritesheet/spaceShooter2_spritesheet.png" id="1_v0iea"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f60y1"]
+atlas = ExtResource("1_v0iea")
+region = Rect2(277, 324, 100, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vivr"]
+atlas = ExtResource("1_v0iea")
+region = Rect2(377, 323, 14, 23)
+
+[node name="Player" type="CharacterBody2D" unique_id=85902818 groups=["Player"]]
+script = ExtResource("1_cvnsp")
+
+[node name="Character" type="Sprite2D" parent="." unique_id=6255428]
+texture_filter = 1
+rotation = 1.5707964
+texture = SubResource("AtlasTexture_f60y1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=423147415]
+rotation = 1.5707964
+polygon = PackedVector2Array(40, -37, -39.8, -37, -41.1, -35, -42.5, -35, -50, -7.8999996, -50, 14, -31, 36.699997, -6, 37, -6, 31, 6.200001, 31, 6.9000015, 37, 31.5, 37, 50, 13, 50, -10.299999, 44, -28.3, 44, -31.8, 40, -35.8)
+
+[node name="Thrust" type="Sprite2D" parent="." unique_id=546050048]
+texture_filter = 1
+position = Vector2(-50, 0)
+rotation = 1.5707964
+scale = Vector2(1.6, 1.6)
+texture = SubResource("AtlasTexture_1vivr")
+
+[node name="Weapons" type="Node2D" parent="." unique_id=26951217]
+rotation = 1.5707964
+
+[node name="muzzle" type="Marker2D" parent="Weapons" unique_id=257160815]
+position = Vector2(20, -42)
+
+[node name="muzzle2" type="Marker2D" parent="Weapons" unique_id=1688430374]
+position = Vector2(-20, -42)
+
+[node name="Timer" type="Timer" parent="." unique_id=962001774]
+wait_time = 0.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

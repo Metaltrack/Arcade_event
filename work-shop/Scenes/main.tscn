@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://o31wnhehwu5w"]
+
+[ext_resource type="PackedScene" uid="uid://bhgrixcpx0q75" path="res://Scenes/player.tscn" id="2_8gbba"]
+[ext_resource type="Texture2D" uid="uid://cwfqq03aftve7" path="res://Assets/CelestialObjects.png" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://3fi6kk1epxbr" path="res://Scenes/asteroid_1.tscn" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://vi1ntw7hi3wm" path="res://Scripts/control.gd" id="4_jjvhh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vivr"]
+atlas = ExtResource("2_bo1nx")
+region = Rect2(257, 0, 127, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rak4"]
+atlas = ExtResource("2_bo1nx")
+region = Rect2(258, 96, 126, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vrlf"]
+atlas = ExtResource("2_bo1nx")
+region = Rect2(220, 224, 35, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
+font_size = 42
+outline_size = 5
+outline_color = Color(0, 1, 0, 1)
+
+[node name="Main" type="Node2D" unique_id=1087335749]
+
+[node name="Background" type="Node2D" parent="." unique_id=70802035]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=1578240145]
+modulate = Color(1, 1, 1, 0.78039217)
+z_index = -1
+position = Vector2(259, 292)
+rotation = -0.42760566
+scale = Vector2(3.215, 3.215)
+texture = SubResource("AtlasTexture_1vivr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background" unique_id=1198636364]
+modulate = Color(1, 1, 1, 0.53333336)
+z_index = -2
+texture_filter = 1
+position = Vector2(754.99994, 658)
+rotation = -0.8813913
+scale = Vector2(7.545, 7.545)
+texture = SubResource("AtlasTexture_1rak4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Background" unique_id=2095862457]
+z_index = -2
+texture_filter = 1
+position = Vector2(292, 154.00002)
+rotation = -0.02617994
+scale = Vector2(9.66, 9.66)
+texture = SubResource("AtlasTexture_8vrlf")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Background" unique_id=2124577388]
+z_index = -3
+texture_filter = 1
+position = Vector2(917.99994, 156)
+rotation = 2.0504467
+scale = Vector2(9.66, 9.66)
+texture = SubResource("AtlasTexture_8vrlf")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Background" unique_id=1691498716]
+z_index = -3
+texture_filter = 1
+position = Vector2(120.99999, 641.00006)
+rotation = 2.0504467
+scale = Vector2(9.66, 9.66)
+texture = SubResource("AtlasTexture_8vrlf")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Background" unique_id=1155574804]
+z_index = -3
+texture_filter = 1
+position = Vector2(107.999985, 248.00009)
+rotation = 2.0504467
+scale = Vector2(9.66, 9.66)
+texture = SubResource("AtlasTexture_8vrlf")
+
+[node name="Player" parent="." unique_id=85902818 instance=ExtResource("2_8gbba")]
+position = Vector2(553, 426)
+
+[node name="Asteroid_1" parent="." unique_id=454118164 instance=ExtResource("3_8gbba")]
+position = Vector2(978, 224)
+
+[node name="Control" type="Control" parent="." unique_id=1909617036]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_jjvhh")
+
+[node name="Label" type="Label" parent="Control" unique_id=1757566898]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "HEALTH: "
+label_settings = SubResource("LabelSettings_1vivr")
