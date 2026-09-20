@@ -20,7 +20,7 @@ func _on_timer_timeout() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Asteroid"):
 		if body.has_method("take_knockback"):
-			body.take_knockback(10, direction, 200.0)
+			body.take_knockback(damage, direction, 200.0)
 	
 	queue_free()
 	
