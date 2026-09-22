@@ -20,7 +20,7 @@ atlas = ExtResource("2_bo1nx")
 region = Rect2(257, 0, 127, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00oex"]
-size = Vector2(2128, 1229)
+size = Vector2(1836, 1097)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
 font_size = 42
@@ -211,7 +211,7 @@ wait_time = 2.0
 scale = Vector2(1, 1.0067865)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spawner/area" unique_id=808670764]
-position = Vector2(608, 344.5)
+position = Vector2(691, 410.5)
 shape = SubResource("RectangleShape2D_00oex")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1101766268]
@@ -245,7 +245,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1367709356]
 scale = Vector2(2.160001, 1)
 offset = Vector2(640, 360)
-zoom = Vector2(0.465, 0.465)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1142326355]
 libraries/ = SubResource("AnimationLibrary_21xkr")
