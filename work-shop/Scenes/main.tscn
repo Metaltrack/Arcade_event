@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cwfqq03aftve7" path="res://Assets/CelestialObjects.png" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://vi1ntw7hi3wm" path="res://Scripts/control.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://56p0hxcogbge" path="res://Scripts/spawner.gd" id="4_kry3j"]
+[ext_resource type="Texture2D" uid="uid://dqixseb0fit0u" path="res://Assets/aaa.png" id="6_21xkr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1rak4"]
 atlas = ExtResource("2_bo1nx")
@@ -17,6 +18,9 @@ region = Rect2(220, 224, 35, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vivr"]
 atlas = ExtResource("2_bo1nx")
 region = Rect2(257, 0, 127, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00oex"]
+size = Vector2(2128, 1229)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1vivr"]
 font_size = 42
@@ -40,7 +44,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_kry3j"]
 resource_name = "cam_shake"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -64,7 +68,8 @@ _data = {
 script = ExtResource("1_kry3j")
 
 [node name="Background" type="Node2D" parent="." unique_id=70802035]
-scale = Vector2(0.6, 0.6)
+visible = false
+scale = Vector2(0.58865154, 0.6674382)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background" unique_id=1198636364]
 modulate = Color(1, 1, 1, 0.72156864)
@@ -116,9 +121,10 @@ scale = Vector2(3.215, 3.215)
 texture = SubResource("AtlasTexture_1vivr")
 
 [node name="Background2" type="Node2D" parent="." unique_id=1729863516]
+visible = false
 position = Vector2(1426.0001, 465.00003)
 rotation = 2.63473
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.58865154, 0.6674382)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background2" unique_id=835911797]
 modulate = Color(1, 1, 1, 0.72156864)
@@ -171,10 +177,14 @@ texture = SubResource("AtlasTexture_1vivr")
 
 [node name="Player" parent="." unique_id=85902818 instance=ExtResource("2_8gbba")]
 position = Vector2(553, 426)
+scale = Vector2(0.42, 0.42877385)
 
 [node name="Spawner" type="Node2D" parent="." unique_id=1873724121]
+scale = Vector2(1, 0.99325925)
 script = ExtResource("4_kry3j")
-spawn_limit = 2
+total_waves = 1
+wave_interval = 0.0
+spawns_per_wave = 5
 
 [node name="Marker2D" type="Marker2D" parent="Spawner" unique_id=2044551272]
 position = Vector2(1430, -57)
@@ -197,6 +207,13 @@ position = Vector2(1468, 641)
 [node name="Timer" type="Timer" parent="Spawner" unique_id=1947311708]
 wait_time = 2.0
 
+[node name="area" type="Area2D" parent="Spawner" unique_id=378076200]
+scale = Vector2(1, 1.0067865)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spawner/area" unique_id=808670764]
+position = Vector2(608, 344.5)
+shape = SubResource("RectangleShape2D_00oex")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1101766268]
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=1909617036]
@@ -205,18 +222,39 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_jjvhh")
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=1757566898]
+[node name="health" type="Label" parent="CanvasLayer/Control" unique_id=1757566898]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "HEALTH: "
 label_settings = SubResource("LabelSettings_1vivr")
+metadata/_edit_use_anchors_ = true
+
+[node name="score" type="Label" parent="CanvasLayer/Control" unique_id=1635477545]
+layout_mode = 0
+offset_left = 932.0
+offset_top = 2.0
+offset_right = 1115.0
+offset_bottom = 60.0
+text = "SCORE:"
+label_settings = SubResource("LabelSettings_1vivr")
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1367709356]
+scale = Vector2(2.160001, 1)
 offset = Vector2(640, 360)
+zoom = Vector2(0.465, 0.465)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1142326355]
 libraries/ = SubResource("AnimationLibrary_21xkr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=671067679]
+z_index = -17
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(635, 359)
+texture = ExtResource("6_21xkr")
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]

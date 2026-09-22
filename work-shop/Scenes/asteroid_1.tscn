@@ -85,6 +85,7 @@ mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_v8xjk")
 gravity_scale = 0.0
 script = ExtResource("1_tqh6u")
+speed = 142.415
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=944336638]
 scale = Vector2(0.43, 0.43)
