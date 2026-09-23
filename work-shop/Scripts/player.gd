@@ -48,6 +48,9 @@ func _process(delta: float) -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	if not Global.start:
+		return
+	
 	look_at(get_global_mouse_position())
 	Global.player_position = global_position
 	

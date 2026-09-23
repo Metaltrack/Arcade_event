@@ -5,6 +5,9 @@ extends Node2D
 var can_spawn :bool = true
 
 func _process(delta: float) -> void:
+	if not Global.start:
+		return
+	
 	if $Marker2D.get_child_count() >= spawn_limit:
 		return
 	

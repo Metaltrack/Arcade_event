@@ -23,6 +23,11 @@ font_size = 42
 outline_size = 5
 outline_color = Color(0, 1, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_kry3j"]
+font_size = 42
+outline_size = 5
+outline_color = Color(1, 0, 0, 1)
+
 [sub_resource type="Animation" id="Animation_21xkr"]
 length = 0.001
 tracks/0/type = "value"
@@ -40,7 +45,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_kry3j"]
 resource_name = "cam_shake"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -170,11 +175,11 @@ scale = Vector2(3.215, 3.215)
 texture = SubResource("AtlasTexture_1vivr")
 
 [node name="Player" parent="." unique_id=85902818 instance=ExtResource("2_8gbba")]
-position = Vector2(553, 426)
+position = Vector2(616, 286)
 
 [node name="Spawner" type="Node2D" parent="." unique_id=1873724121]
 script = ExtResource("4_kry3j")
-spawn_limit = 2
+spawn_limit = 5
 
 [node name="Marker2D" type="Marker2D" parent="Spawner" unique_id=2044551272]
 position = Vector2(1430, -57)
@@ -213,6 +218,35 @@ offset_bottom = 23.0
 text = "HEALTH: "
 label_settings = SubResource("LabelSettings_1vivr")
 
+[node name="Label2" type="Label" parent="CanvasLayer/Control" unique_id=1076651161]
+layout_mode = 0
+offset_top = 58.0
+offset_right = 156.0
+offset_bottom = 116.0
+text = "SCORE: "
+label_settings = SubResource("LabelSettings_kry3j")
+
+[node name="Button" type="Button" parent="CanvasLayer/Control" unique_id=512771747]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 447.0
+offset_right = 743.0
+offset_bottom = 563.0
+theme_override_font_sizes/font_size = 64
+text = "START
+"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Control" unique_id=1848116508]
+visible = false
+layout_mode = 0
+offset_left = 485.0
+offset_top = 563.0
+offset_right = 743.0
+offset_bottom = 679.0
+theme_override_font_sizes/font_size = 64
+text = "RESTART
+"
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1367709356]
 offset = Vector2(640, 360)
 
@@ -220,3 +254,4 @@ offset = Vector2(640, 360)
 libraries/ = SubResource("AnimationLibrary_21xkr")
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]

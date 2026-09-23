@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func die():
 	$Sprite2D.visible = false
+	$CollisionShape2D.disabled = true
 	$AnimatedSprite2D.visible = true
 	$AnimatedSprite2D.play("default")
 	await $AnimatedSprite2D.animation_finished
@@ -27,9 +28,11 @@ func _physics_process(delta: float) -> void:
 	apply_central_force(direction * speed)
 	
 
-func take_knockback(damage :int, direction :Vector2, force :float) -> void:
+func take_knockback(bullet_damage :int, direction :Vector2, force :float) -> void:
 	apply_impulse(direction * force, Vector2.ZERO)
-	health -= damage
+	health -= bullet_damage
+	if health <= 0:
+		Global.score += 1
 	
 
 func _on_timer_timeout() -> void:

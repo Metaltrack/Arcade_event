@@ -7,3 +7,7 @@ func _ready() -> void:
 func do_cam_shake():
 	$AnimationPlayer.play("cam_shake")
 	
+
+func _on_button_pressed() -> void:
+	$CanvasLayer/Control/Button.visible = false
+	Global.start = true
